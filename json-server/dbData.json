@@ -25,7 +25,24 @@
       "year_published": 2017,
       "rating": 5.20,
 	  "price":10,
-	  "imgUrl":"https://images-na.ssl-images-amazon.com/images/I/41mXEbkajLL._SY344_BO1,204,203,200_.jpg"
+	  "imgUrl":"https://images-na.ssl-images-amazon.com/images/I/51TXjVsADfL._SY346_.jpg"
     }
+  ],
+  "sortOptions":[
+	  {
+		"id":1,
+		"text":"Year",
+		"value":"year_published"
+	  },
+	  {
+		"id":2,
+		"text":"Title",
+		"value":"title"
+	  },
+	  {
+		"id":3,
+		"text":"Rating",
+		"value":"rating"
+	  }
   ]
 }
