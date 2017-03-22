@@ -4,8 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
@@ -13,6 +12,11 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 /* Prime NG */
 import {CalendarModule} from 'primeng/primeng';
+
+/*Components  */
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { BooksComponent } from './books/books.component';
 
 @NgModule({
   imports: [
@@ -25,7 +29,8 @@ import {CalendarModule} from 'primeng/primeng';
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    BooksComponent
   ],
   providers: [
     ApiService
