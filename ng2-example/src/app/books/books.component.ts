@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { Books } from './shared/books.model';
 import { BooksService } from './shared/books.service';
+import { BookFilter } from '../book-filters/shared/book-filters.model';
 
 @Component({
 	selector: 'books',
@@ -10,14 +11,31 @@ import { BooksService } from './shared/books.service';
 	providers: [BooksService],
 })
 
-export class BooksComponent implements OnInit {
+export class BooksComponent implements OnInit, OnChanges{
 	books: Books[] = [];
+	filters:BookFilter={
+		pageSize:"100",
+		pageNumber:1,
+		sortBy:'',
+		searchText:''
+	}
+	@Input() set sortBy(value:string){
+		console.log("Hereeeee" + value);
+		 this.filters.sortBy=value;
+	}
 
 	constructor(private booksService: BooksService) { }
 
 	ngOnInit() {
 		console.log("Books component");
-		this.booksService.getList().subscribe((res) => {
+		this.UpdateList() ;
+	
+	}
+	ngOnChanges(){
+		this.UpdateList() ;
+	}
+	UpdateList() {
+		this.booksService.getList(this.filters).subscribe((res) => {
 			this.books = res;
 		});
 	}

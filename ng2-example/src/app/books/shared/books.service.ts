@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Books } from './books.model';
+import{BookFilter} from '../../book-filters/shared/book-filters.model';
 
 @Injectable()
 export class BooksService {
 
 	constructor(private http: Http) { }
 
-	getList(): Observable<Books[]> {
-		return this.http.get('http://localhost:3000/books').map(res => res.json() as Books[]);
+	getList(filters:BookFilter): Observable<Books[]> {
+		let params = new URLSearchParams();
+		params.set('_sort',String(filters.sortBy));
+		params.set('_order',"ASC");
+
+		return this.http.get('http://localhost:3000/books',{search:params}).map(res => res.json() as Books[]);
 	}
 }

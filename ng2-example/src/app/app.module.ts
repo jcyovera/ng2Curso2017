@@ -11,12 +11,14 @@ import { routing } from './app.routing';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 /* Prime NG */
-import {CalendarModule} from 'primeng/primeng';
+import { CalendarModule } from 'primeng/primeng';
 
 /*Components  */
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BooksComponent } from './books/books.component';
+import { BooksManagerComponent } from './books-manager/books-manager.component';
+import { BookFiltersComponent } from './book-filters/book-filters.component';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import { BooksComponent } from './books/books.component';
     AppComponent,
     HomeComponent,
     AboutComponent,
-    BooksComponent
+    BooksComponent,
+    BooksManagerComponent,
+    BookFiltersComponent
   ],
   providers: [
     ApiService
@@ -38,7 +42,7 @@ import { BooksComponent } from './books/books.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
+  constructor(public appRef: ApplicationRef) { }
   hmrOnInit(store) {
     console.log('HMR store', store);
   }
