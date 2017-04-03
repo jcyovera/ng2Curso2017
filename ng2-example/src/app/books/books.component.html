@@ -6,7 +6,7 @@
             <img class="card-img-top" [src]="book.imgUrl" alt="Card image cap">
             <div class="card-block">
                 <h4 class="card-title" [innerText]="book.title"></h4>
-                <p class="card-text" [innerText]="book.author"></p>
+                <p class="card-text" myHighlight [innerText]="book.author"></p>
             </div>
             <div class="card-footer">
                 <small class="text-muted">{{book.year_published}}</small>

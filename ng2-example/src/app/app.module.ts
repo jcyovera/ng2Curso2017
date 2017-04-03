@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { ApiService } from './shared';
+import { ApiService, EmitterService } from './shared';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -19,6 +19,10 @@ import { AboutComponent } from './about/about.component';
 import { BooksComponent } from './books/books.component';
 import { BooksManagerComponent } from './books-manager/books-manager.component';
 import { BookFiltersComponent } from './book-filters/book-filters.component';
+/* Directives and Pipes */
+import { HighlightDirective} from './_directives/highlight';
+import { MyCurrencyPipe } from './shared/my-currency.pipe';
+import { MyCurrencyFormatterDirective } from './_directives/currency-formatter';
 
 @NgModule({
   imports: [
@@ -34,10 +38,15 @@ import { BookFiltersComponent } from './book-filters/book-filters.component';
     AboutComponent,
     BooksComponent,
     BooksManagerComponent,
-    BookFiltersComponent
+    BookFiltersComponent,
+    HighlightDirective,
+    MyCurrencyPipe,
+    MyCurrencyFormatterDirective
   ],
   providers: [
-    ApiService
+    ApiService,
+    EmitterService,
+    MyCurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

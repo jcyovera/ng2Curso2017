@@ -11,11 +11,8 @@ import { BooksManagerService } from './shared/books-manager.service';
 
 export class BooksManagerComponent implements OnInit {
 	booksManager: BooksManager[] = [];
-	constructor(private booksManagerService: BooksManagerService) { }
+	constructor() { }
 
 	ngOnInit() {
-		this.booksManagerService.getList().subscribe((res) => {
-			this.booksManager = res;
-		});
 	}
 }

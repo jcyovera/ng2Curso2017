@@ -20,7 +20,9 @@
         </li>
       </ul>
       <div class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <input  id="inputSearchBar" class="form-control mr-sm-2" type="text" 
+        placeholder="Search" 
+        [(ngModel)]="searchText" (keyup)="onSearch($event)">
         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
       </div>
     </div>
