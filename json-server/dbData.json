@@ -44,5 +44,11 @@
 		"text":"Rating",
 		"value":"rating"
 	  }
+  ],
+    "users":[
+	  {
+		  "username":"jcyovera@gmail.com",
+		  "password":"admin123"
+	  }
   ]
 }
