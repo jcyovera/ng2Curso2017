@@ -24,6 +24,13 @@ import { HighlightDirective} from './_directives/highlight';
 import { MyCurrencyPipe } from './shared/my-currency.pipe';
 import { MyCurrencyFormatterDirective } from './_directives/currency-formatter';
 
+/* Guards & components login */
+import { CanActivateAuthGuard } from './shared/can-activate.service';
+import { UserProfileService} from './login/user-profile.service';
+import { RouteComponent } from './shared/route.component';
+import{ LoginComponent} from './login/login.component';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -41,12 +48,16 @@ import { MyCurrencyFormatterDirective } from './_directives/currency-formatter';
     BookFiltersComponent,
     HighlightDirective,
     MyCurrencyPipe,
-    MyCurrencyFormatterDirective
+    MyCurrencyFormatterDirective,
+    LoginComponent,
+    RouteComponent
   ],
   providers: [
     ApiService,
     EmitterService,
-    MyCurrencyPipe
+    MyCurrencyPipe,
+    CanActivateAuthGuard,
+    UserProfileService
   ],
   bootstrap: [AppComponent]
 })
