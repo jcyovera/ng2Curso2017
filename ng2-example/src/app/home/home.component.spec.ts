@@ -1,28 +1,33 @@
-// This shows a different way of testing a component, check about for a simpler one
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { TestBed } from '@angular/core/testing';
-
+import { provideRoutes } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HomeComponent } from './home.component';
+import { MyCurrencyPipe } from '../shared/my-currency.pipe';
 
-describe('Home Component', () => {
-  const html = '<my-home></my-home>';
-
+describe('Home', () => {
+  let myCurrencyPipeMock={
+    transform(){}
+  };
+  // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
+    spyOn(myCurrencyPipeMock, "transform").and.returnValue("$ 1121");
+
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, TestComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [RouterTestingModule, FormsModule],
+      declarations: [HomeComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [ provideRoutes([]),
+        { provide: MyCurrencyPipe, useValue: myCurrencyPipeMock }]
     });
-    TestBed.overrideComponent(TestComponent, { set: { template: html }});
   });
 
-  it('should ...', () => {
-    const fixture = TestBed.createComponent(TestComponent);
+  it('should have an instance', () => {
+    let fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
-    expect(fixture.nativeElement.children[0].textContent).toContain('Home Works!');
+    let component = fixture.debugElement.componentInstance;
+    expect(component).toBeDefined();
   });
 
 });
-
-@Component({selector: 'my-test', template: ''})
-class TestComponent { }
