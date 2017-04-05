@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -29,7 +29,8 @@ import { CanActivateAuthGuard } from './shared/can-activate.service';
 import { UserProfileService} from './login/user-profile.service';
 import { RouteComponent } from './shared/route.component';
 import{ LoginComponent} from './login/login.component';
-
+/* Reactive  forms */
+import { RegisterUserComponent} from './register-user/register-user.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import{ LoginComponent} from './login/login.component';
     HttpModule,
     FormsModule,
     routing,
-    CalendarModule
+    CalendarModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import{ LoginComponent} from './login/login.component';
     MyCurrencyPipe,
     MyCurrencyFormatterDirective,
     LoginComponent,
-    RouteComponent
+    RouteComponent,
+    RegisterUserComponent
   ],
   providers: [
     ApiService,
