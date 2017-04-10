@@ -36,11 +36,31 @@ describe('a books component', () => {
 	it('should have an instance ', () => {
 		expect(component).toBeDefined();
 	});
+	it('should have pagesize of 100', () => {
+		expect(component.filters.pageSize).toBe("100");
+	})
+	it('should fecth list on ngInit', () => {
+		//Arrange
+		let model: any={
+			Data:[{}], TotalRows:1, TotalPages:1
+		};
+		let service= TestBed.get(BooksService);
+		service.getList=()=>{
+			return Observable.of(model)
+		}
+		//Act
+		component.ngOnInit();
+		//Assert
+		expect(component.books).toBe(model);
+		expect(component.books.length).toBe(model.length);
+		expect(emitterMock.get).toHaveBeenCalled();
+		expect(emitterMock.get).toHaveBeenCalledWith(EmmitterConstants.SEARCHTEXT_CHANGE);
+	});
 });
 
-// Mock of the original books service
-class MockBooksService extends BooksService {
-	getList(): Observable<any> {
-		return Observable.from([{ id: 1, name: 'One' }, { id: 2, name: 'Two' }]);
+	// Mock of the original books service
+	class MockBooksService extends BooksService {
+		getList(): Observable<any> {
+			return Observable.from([{ id: 1, name: 'One' }, { id: 2, name: 'Two' }]);
+		}
 	}
-}

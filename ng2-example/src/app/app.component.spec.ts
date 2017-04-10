@@ -15,6 +15,7 @@ describe('App', () => {
   beforeEach(() => {
     emitterMock = new EmitterServiceMock();
     spyOn(emitterMock, "get").and.returnValue(new EventEmitter<any>());
+    
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, FormsModule],
       declarations: [AppComponent],
