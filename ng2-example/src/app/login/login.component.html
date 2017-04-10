@@ -2,20 +2,20 @@
 
 <div class="container col-lg-5">
   <div class="form-group row">
-    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    <div id="errorMessage" class="alert alert-danger" role="alert" *ngIf="errorMessage">
       <strong>Oh snap!</strong> {{errorMessage}}
     </div>
   </div>
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="username">
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="username">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" [(ngModel)]="password">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="password">
     </div>
   </div>
   <div class="form-group row">
@@ -29,7 +29,7 @@
   </div>
   <div class="form-group row">
     <div class="offset-sm-2 col-sm-10">
-      <button (click)="login()" *ngIf="!isLoggedIn" class="btn btn-primary">Login</button>
+      <button id="btnLogin" (click)="login()" *ngIf="!isLoggedIn" class="btn btn-primary">Login</button>
       <button (click)="logout()" *ngIf="isLoggedIn" class="btn btn-primary">Logout</button>
     </div>
   </div>

@@ -6,6 +6,7 @@ import { LoginService } from './login.service';
 import { UserProfileService } from './user-profile.service';
 
 @Component({
+  selector: 'my-login',
   templateUrl: './login.component.html',
   providers: [LoginService]
 })
